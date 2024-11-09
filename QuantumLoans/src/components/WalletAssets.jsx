@@ -1,24 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 
-function WalletAssets({ walletAddress }) {
-    const [assets, setAssets] = useState([]);
-
-    useEffect(() => {
-        async function fetchAssets() {
-            try {
-                const response = await axios.get(
-                    `https://api.etherscan.io/v2/api?chainid=1&module=account&action=addresstokenbalance&address=${walletAddress}&page=1&offset=100&apikey=ETHERSCAN_API_KEY`
-                );
-                const data = response.data.result;
-                setAssets(Array.isArray(data) ? data : []);
-            } catch (error) {
-                console.error('Error fetching assets:', error);
-                setAssets([]);
-            }
-        }
-        fetchAssets();
-    }, [walletAddress]);
+function WalletAssets() {
+    // Hardcoded assets for Solana, Bitcoin, Ethereum, and Arbitrum
+    const assets = [
+        { tokenName: 'Solana', amount: 100.5 },
+        { tokenName: 'Bitcoin', amount: 0.25 },
+        { tokenName: 'Ethereum', amount: 2.1 },
+        { tokenName: 'Arbitrum', amount: 150.75 }
+    ];
 
     return (
         <div>
@@ -26,7 +15,9 @@ function WalletAssets({ walletAddress }) {
             <ul className="list-disc list-inside space-y-1">
                 {assets.length > 0 ? (
                     assets.map((asset, index) => (
-                        <li key={index} className="text-neutral-300">{asset.tokenName || 'Unnamed Token'}</li>
+                        <li key={index} className="text-neutral-300">
+                            {asset.tokenName}: {asset.amount} units
+                        </li>
                     ))
                 ) : (
                     <p className="text-neutral-400">No assets available</p>
