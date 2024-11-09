@@ -9,8 +9,9 @@ function TransactionHistory({ walletAddress }) {
         async function fetchTransactions() {
             try {
                 const response = await axios.get(
-                    `https://api.etherscan.io/api?module=account&action=txlist&address=${walletAddress}&sort=desc&apikey=ETHERSCANAPIKEY`
+                    `https://api.etherscan.io/v2/api?chainid=1&module=account&action=txlist&address=${walletAddress}&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey=ETHERSCAN_API_KEY`
                 );
+                console.log(response);
                 if (Array.isArray(response.data.result)) {
                     setTransactions(response.data.result);
                 } else {

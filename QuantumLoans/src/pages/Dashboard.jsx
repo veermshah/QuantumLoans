@@ -5,7 +5,7 @@ import WalletAssets from '../components/WalletAssets';
 import TradingViewChart from '../components/TradingViewChart';
 
 function Dashboard() {
-    const walletAddress = "WALLETHEXCODE";
+    const walletAddress = "WALLET_ADDRESS";
     const healthScore = 85; // Placeholder score, could be calculated or fetched from an API
 
     return (

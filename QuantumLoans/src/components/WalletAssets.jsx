@@ -8,7 +8,7 @@ function WalletAssets({ walletAddress }) {
         async function fetchAssets() {
             try {
                 const response = await axios.get(
-                    `https://api.etherscan.io/api?module=account&action=tokenlist&address=${walletAddress}&apikey=ETHERSCANAPIKEY`
+                    `https://api.etherscan.io/v2/api?chainid=1&module=account&action=addresstokenbalance&address=${walletAddress}&page=1&offset=100&apikey=ETHERSCAN_API_KEY`
                 );
                 const data = response.data.result;
                 setAssets(Array.isArray(data) ? data : []);
