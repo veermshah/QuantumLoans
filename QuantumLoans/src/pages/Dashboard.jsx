@@ -21,9 +21,9 @@ function Dashboard() {
                 <div className="bg-neutral-800 border border-neutral-700  p-4 rounded-lg shadow-md min-h-[200px] flex items-center justify-center">
                     <WalletAssets walletAddress={walletAddress} />
                 </div>
-            </div>
-            <div className="bg-neutral-800 border border-neutral-700 p-4 rounded-lg shadow-md min-h-[600px] flex items-center justify-center">
+                <div className="bg-neutral-800 border border-neutral-700 p-4 rounded-lg shadow-md min-h-[600px] flex items-center justify-center">
                 <TradingViewChart symbol="BTCUSD" />
+                </div>
             </div>
         </div>
     );
