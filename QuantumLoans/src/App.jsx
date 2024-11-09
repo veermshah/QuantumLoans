@@ -10,7 +10,7 @@ function App() {
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/borrow" element={<Borrow />} />
         <Route path="/lend" element={<Lend />} />
         <Route path="/cryptohealth" element={<CryptoHealth />} />
