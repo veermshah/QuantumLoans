@@ -1,11 +1,11 @@
+// navbar.jsx
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useSDK } from '@metamask/sdk-react';
 
-function Navbar() {
+function Navbar({ setWalletAddress }) {
     const navigate = useNavigate();
     const location = useLocation();
-    const [active, setActive] = React.useState("");
     const [active, setActive] = useState('');
     const [account, setAccount] = useState('');
     const { sdk, connected, connecting } = useSDK();
@@ -16,39 +16,40 @@ function Navbar() {
                 try {
                     const accounts = await sdk.connect();
                     setAccount(accounts[0]);
+                    setWalletAddress(accounts[0]);
                 } catch (err) {
                     console.error("Failed to get accounts", err);
                     setAccount('');
+                    setWalletAddress('');
                 }
             } else {
                 setAccount('');
+                setWalletAddress('');
             }
         };
 
         checkConnection();
-    }, [sdk, connected]);
-
-    const handleClick = (page) => {
-        setActive(page);
-    }
+    }, [sdk, connected, setWalletAddress]);
 
     const connectWallet = async () => {
         try {
             const accounts = await sdk?.connect();
             setAccount(accounts?.[0]);
+            setWalletAddress(accounts?.[0]);
         } catch (err) {
             console.error("Failed to connect", err);
         }
-    }
+    };
 
     const disconnectWallet = async () => {
         try {
             await sdk?.disconnect();
             setAccount('');
+            setWalletAddress('');
         } catch (err) {
             console.error("Failed to disconnect", err);
         }
-    }
+    };
 
     const handleClick = (page) => {
         setActive(page);
@@ -62,21 +63,19 @@ function Navbar() {
     ];
 
     useEffect(() => {
-        // Set the active state when the location changes
         if (location.pathname !== "/") {
             const activePage = navItems.find((item) => item.path === location.pathname);
             if (activePage) {
                 setActive(activePage.name.toLowerCase());
             }
         } else {
-            setActive(""); // No active tab when on the root page
+            setActive("");
         }
     }, [location, navItems]);
 
     return (
         <nav className="fixed top-0 left-0 z-50 w-full bg-black border-neutral-800">
             <div className="mx-auto flex items-center justify-between px-6 pt-4">
-                {/* Logo */}
                 <div className="flex items-center pb-4">
                     <div
                         onClick={() => navigate("/")}
@@ -86,8 +85,7 @@ function Navbar() {
                     </div>
                 </div>
 
-                {/* Navigation Items */}
-                <div className=" flex justify-center">
+                <div className="flex justify-center">
                     <div className="flex space-x-5 mt-4">
                         {navItems.map((item) => (
                             <Link
@@ -98,9 +96,7 @@ function Navbar() {
                                         ? "bg-white text-black hover:text-green-500"
                                         : "text-neutral-400 hover:text-white"
                                 }`}
-                                onClick={() =>
-                                    handleClick(item.name.toLowerCase())
-                                }
+                                onClick={() => handleClick(item.name.toLowerCase())}
                             >
                                 {item.name}
                             </Link>
@@ -108,7 +104,6 @@ function Navbar() {
                     </div>
                 </div>
 
-                {/* Connect/Disconnect Wallet Button */}
                 {!account ? (
                     <button 
                         onClick={connectWallet}

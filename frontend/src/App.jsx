@@ -1,4 +1,5 @@
-import React from 'react';
+// app.jsx
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { MetaMaskProvider } from '@metamask/sdk-react';
 import Navbar from './components/Navbar';
@@ -8,8 +9,9 @@ import Lend from './pages/Lend';
 import CryptoHealth from './pages/CryptoHealth';
 import Home from './pages/Home';
 
-
 function App() {
+  const [walletAddress, setWalletAddress] = useState('');
+
   return (
     <MetaMaskProvider
       debug={false}
@@ -22,10 +24,10 @@ function App() {
       }}
     >
       <Router>
-        <Navbar />
+        <Navbar setWalletAddress={setWalletAddress} />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard" element={<Dashboard walletAddress={walletAddress} />} />
           <Route path="/borrow" element={<Borrow />} />
           <Route path="/lend" element={<Lend />} />
           <Route path="/cryptohealth" element={<CryptoHealth />} />

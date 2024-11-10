@@ -6,12 +6,13 @@ function TransactionHistory({ walletAddress }) {
     const [error, setError] = useState(null);
 
     useEffect(() => {
+        if (!walletAddress) return; // Ensure walletAddress is defined
+
         async function fetchTransactions() {
             try {
                 const response = await axios.get(
-                    `https://api.etherscan.io/v2/api?chainid=1&module=account&action=txlist&address=${walletAddress}&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey=ETHERSCAN_API_KEY`
+                    `https://api.etherscan.io/v2/api?chainid=1&module=account&action=txlist&address=${walletAddress}&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey=B8WF7MWBIGQ565C9MJS8VM9TYNJU5WCNTU`
                 );
-                console.log(response);
                 if (Array.isArray(response.data.result)) {
                     setTransactions(response.data.result);
                 } else {
@@ -22,6 +23,7 @@ function TransactionHistory({ walletAddress }) {
                 setError("Failed to load transactions.");
             }
         }
+        
         fetchTransactions();
     }, [walletAddress]);
 
