@@ -3,7 +3,7 @@ import HealthRow from "../components/HealthRow";
 
 function CryptoHealth() {
     return (
-        <div className="w-full min-h-screen bg-gray-200 ">
+        <div className="w-full min-h-screen bg-white ">
             {/* Added top padding here */}
             <div className="w-full px-6 py-4">
                 <div className="flex items-center justify-between">

@@ -30,7 +30,7 @@ function Navbar() {
     }, [location, navItems]);
 
     return (
-        <nav className="fixed top-0 left-0 w-full bg-black border-neutral-800">
+        <nav className="fixed top-0 left-0 z-50 w-full bg-black border-neutral-800">
             <div className="mx-auto flex items-center justify-between px-6 pt-4">
                 {/* Logo */}
                 <div className="flex items-center pb-4">
@@ -51,7 +51,7 @@ function Navbar() {
                                 to={item.path}
                                 className={`px-4 py-2 text-sm font-medium transition-colors duration-200 rounded-t-2xl ${
                                     active === item.name.toLowerCase()
-                                        ? "bg-gray-200 text-black hover:text-green-500"
+                                        ? "bg-white text-black hover:text-green-500"
                                         : "text-neutral-400 hover:text-white"
                                 }`}
                                 onClick={() =>
