@@ -82,7 +82,7 @@ function Navbar() {
                 <div className="flex items-center pb-4">
                     <div
                         onClick={() => navigate("/")}
-                        className="mr-32 w-8 h-8 hover:scale-110 cursor-pointer duration-100 rounded-full bg-green-500 flex items-center justify-center mr-4"
+                        className="mr-36 w-8 h-8 hover:scale-110 cursor-pointer duration-100 rounded-full bg-green-500 flex items-center justify-center"
                     >
                         <span className="text-black font-bold">QL</span>
                     </div>
