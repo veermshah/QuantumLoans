@@ -137,8 +137,8 @@ function Lend() {
     }
 
     return (
-        <div className="bg-gray-200 min-h-screen w-full flex justify-center">
-            <div className="absolute top-16 opacity-90">
+        <div className="bg-white min-h-screen w-full flex justify-center">
+            <div className="absolute top-20 opacity-90">
                 <Spline scene="https://prod.spline.design/0X0VvCqBs6o5FdpF/scene.splinecode" />
             </div>
             <div className="absolute top-32 w-full max-w-5xl mx-4 md:mx-auto">

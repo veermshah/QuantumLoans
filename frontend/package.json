@@ -12,6 +12,7 @@
   "dependencies": {
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
+    "@metamask/sdk-react": "^0.30.2",
     "@mui/material": "^6.1.6",
     "@mui/x-charts": "^7.22.2",
     "@splinetool/react-spline": "^4.0.0",
