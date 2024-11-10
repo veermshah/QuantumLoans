@@ -24,6 +24,20 @@ Welcome to **Quantum Loans**, your gateway to unlocking the potential of your cr
 
 ---
 
+## ⚙️ How to Run the Project
+
+# To run Frontend:
+cd to frontend
+npm install
+npm run dev
+
+# To run Backend
+cd to python-backend
+pip install -r requirements.txt
+python app.py
+
+# This takes care of everything, the backend makes the nececsary calls to the solidity smart contracts
+
 ## Introduction
 
 Overcollateralized crypto loans allow you to access liquidity 💧 without parting with your valuable crypto assets. By depositing more collateral than the loan amount, you can borrow stablecoins or other cryptocurrencies safely and efficiently. 🛡️
