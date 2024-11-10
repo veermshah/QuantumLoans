@@ -40,7 +40,7 @@ export default function HealthRow(props) {
         <div className="mr-16 my-2">
             <div
                 onClick={toggleDropdown}
-                className="bg-gray-300 rounded-2xl px-4 py-3 hover:scale-105 duration-100 cursor-pointer flex justify-between"
+                className="bg-white shadow-2xl rounded-2xl px-4 py-3 hover:scale-105 duration-100 cursor-pointer flex justify-between"
             >
                 <div className="flex font-bold text-lg">
                     {cryptoData?.name || "Loading..."}

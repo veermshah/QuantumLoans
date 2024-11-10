@@ -27,7 +27,7 @@ function Dashboard() {
                     </div>
 
                     {/* Right column: TradingView Chart */}
-                    <div className="bg-neutral-800 border border-neutral-700 p-4 rounded-lg shadow-lg lg:w-2/3 w-full min-h-[500px]">
+                    <div className=" p-2 rounded-lg shadow-lg lg:w-2/3 w-full min-h-[500px]">
                         <TradingViewChart symbol="ETH-USD" />
                     </div>
                 </div>

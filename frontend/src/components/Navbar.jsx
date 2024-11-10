@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { useSDK } from '@metamask/sdk-react';
+import { useSDK } from "@metamask/sdk-react";
 
 function Navbar() {
     const navigate = useNavigate();
     const location = useLocation();
     const [active, setActive] = useState("");
+
     // const [active, setActive] = useState(''); // You can remove this commented line
     const [account, setAccount] = useState('');
     const { sdk, connected, connecting } = useSDK();
@@ -18,15 +19,16 @@ function Navbar() {
                     setAccount(accounts[0]);
                 } catch (err) {
                     console.error("Failed to get accounts", err);
-                    setAccount('');
+                    setAccount("");
                 }
             } else {
-                setAccount('');
+                setAccount("");
             }
         };
 
         checkConnection();
     }, [sdk, connected]);
+
 
     const connectWallet = async () => {
         try {
@@ -35,16 +37,17 @@ function Navbar() {
         } catch (err) {
             console.error("Failed to connect", err);
         }
-    }
+    };
 
     const disconnectWallet = async () => {
         try {
             await sdk?.disconnect();
-            setAccount('');
+            setAccount("");
         } catch (err) {
             console.error("Failed to disconnect", err);
         }
-    }
+    };
+
 
     // Remove the first handleClick declaration and keep only one
     const handleClick = (page) => {
@@ -61,7 +64,9 @@ function Navbar() {
     useEffect(() => {
         // Set the active state when the location changes
         if (location.pathname !== "/") {
-            const activePage = navItems.find((item) => item.path === location.pathname);
+            const activePage = navItems.find(
+                (item) => item.path === location.pathname
+            );
             if (activePage) {
                 setActive(activePage.name.toLowerCase());
             }
@@ -77,7 +82,7 @@ function Navbar() {
                 <div className="flex items-center pb-4">
                     <div
                         onClick={() => navigate("/")}
-                        className="w-8 h-8 hover:scale-110 cursor-pointer duration-100 rounded-full bg-green-500 flex items-center justify-center mr-4"
+                        className="mr-32 w-8 h-8 hover:scale-110 cursor-pointer duration-100 rounded-full bg-green-500 flex items-center justify-center mr-4"
                     >
                         <span className="text-black font-bold">QL</span>
                     </div>
@@ -107,20 +112,20 @@ function Navbar() {
 
                 {/* Connect/Disconnect Wallet Button */}
                 {!account ? (
-                    <button 
+                    <button
                         onClick={connectWallet}
                         disabled={connecting}
-                        className="px-4 py-1.5 bg-green-600 hover:bg-green-700 text-black text-sm font-medium rounded flex items-center gap-2"
+                        className="px-4 py-1.5 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded flex items-center gap-2"
                     >
-                        <div className="w-2 h-2 rounded-full bg-green-400"></div>
-                        {connecting ? 'Connecting...' : 'Connect Wallet'}
+                        <div className="w-2 h-2 rounded-full bg-white"></div>
+                        {connecting ? "Connecting..." : "Connect Wallet"}
                     </button>
                 ) : (
-                    <button 
+                    <button
                         onClick={disconnectWallet}
-                        className="px-4 py-1.5 bg-red-600 hover:bg-red-700 text-black text-sm font-medium rounded flex items-center gap-2"
+                        className="px-4 py-1.5 bg-white hover:bg-black hover:border-white hover:border-2 hover:text-white text-black text-sm font-medium rounded flex items-center gap-2"
                     >
-                        <div className="w-2 h-2 rounded-full bg-red-400"></div>
+                        <div className="w-2 h-2 rounded-full bg-green-400"></div>
                         {`${account.slice(0, 6)}...${account.slice(-4)}`}
                     </button>
                 )}

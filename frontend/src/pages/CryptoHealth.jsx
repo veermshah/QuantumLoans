@@ -3,12 +3,12 @@ import HealthRow from "../components/HealthRow";
 
 function CryptoHealth() {
     return (
-        <div className="w-full min-h-screen bg-white ">
+        <div className="w-full min-h-screen bg-white mt-16">
             {/* Added top padding here */}
             <div className="w-full px-6 py-4">
                 <div className="flex items-center justify-between">
                     {/* Left side: Pie chart */}
-                    <div className="w-1/2 pt-36">
+                    <div className="w-1/2 pt-24">
                         <PieChart
                             colors={[
                                 "#79ff98",
@@ -49,7 +49,7 @@ function CryptoHealth() {
                     </div>
 
                     {/* Right side: Content */}
-                    <div className="w-1/2 pl-4">
+                    <div className="w-1/2 pl-4 mt-16">
                         {/* Add any additional content here */}
                         <HealthRow id="ethereum" />
                         <HealthRow id="bitcoin" />
