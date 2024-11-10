@@ -10,7 +10,7 @@ export default function HealthRow(props) {
             method: "GET",
             headers: {
                 accept: "application/json",
-                "x-cg-demo-api-key": "INSERT_YOUR_API_KEY",
+                "x-cg-demo-api-key": "CG-SBuKTfJpS4TfuzbyQKnvkxRU",
             },
         };
 
@@ -24,12 +24,60 @@ export default function HealthRow(props) {
             .then((data) => {
                 console.log(data);
                 setCryptoData(data);
+                
+                // Create detailed market description
+                const marketDescription = {
+                    name: data.name,
+                    symbol: data.symbol,
+                    currentPrice: data.market_data.current_price.usd,
+                    marketCap: data.market_data.market_cap.usd,
+                    priceChange24h: data.market_data.price_change_percentage_24h,
+                    athDistance: ((data.market_data.current_price.usd - data.market_data.ath.usd) / data.market_data.ath.usd) * 100,
+                    liquidityRisk: data.market_data.market_cap.usd / data.market_data.total_volume.usd,
+                    riskScore: (data.market_data.price_change_percentage_24h / 100) * data.market_data.current_price.usd,
+                    timestamp: new Date().toISOString(),
+                    analysis: {
+                        riskLevel: getRiskLevel(data),
+                        liquidityAssessment: getLiquidityAssessment(data),
+                        priceStatus: getPriceStatus(data)
+                    }
+                };
+
+                // Store in localStorage with unique key for each crypto
+                localStorage.setItem(
+                    `crypto_analysis_${data.id}`, 
+                    JSON.stringify(marketDescription)
+                );
             })
             .catch((err) => {
                 console.error("Error fetching data:", err);
                 setError(err.message);
             });
-    }, []); // Empty dependency array means this runs once on component mount
+    }, [props.id]); // Added props.id as dependency
+
+    // Helper functions for analysis
+    const getRiskLevel = (data) => {
+        const riskScore = (data.market_data.price_change_percentage_24h / 100) * data.market_data.current_price.usd;
+        if (riskScore > 500) return "High Risk";
+        if (riskScore >= 50) return "Medium Risk";
+        return "Low Risk";
+    };
+
+    const getLiquidityAssessment = (data) => {
+        const liquidityRatio = data.market_data.market_cap.usd / data.market_data.total_volume.usd;
+        if (liquidityRatio > 100) return "Low Liquidity";
+        if (liquidityRatio > 50) return "Medium Liquidity";
+        return "High Liquidity";
+    };
+
+    const getPriceStatus = (data) => {
+        const athDistance = ((data.market_data.current_price.usd - data.market_data.ath.usd) / data.market_data.ath.usd) * 100;
+        if (athDistance > -20) return "Near All-Time High";
+        if (athDistance > -50) return "Moderate Recovery Potential";
+        return "Significant Recovery Potential";
+    };
+
+    
 
     // Toggle the dropdown visibility
     const toggleDropdown = () => {
@@ -40,7 +88,7 @@ export default function HealthRow(props) {
         <div className="mr-16 my-2">
             <div
                 onClick={toggleDropdown}
-                className="bg-white shadow-2xl rounded-2xl px-4 py-3 hover:scale-105 duration-100 cursor-pointer flex justify-between"
+                className="bg-white shadow-2xl rounded-lg px-4 py-3 hover:scale-105 duration-100 cursor-pointer flex justify-between"
             >
                 <div className="flex font-bold text-lg">
                     {cryptoData?.name || "Loading..."}

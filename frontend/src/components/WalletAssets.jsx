@@ -6,7 +6,7 @@ function WalletAssets() {
         { tokenName: 'Solana', amount: 100.5 },
         { tokenName: 'Bitcoin', amount: 0.25 },
         { tokenName: 'Ethereum', amount: 2.1 },
-        { tokenName: 'Arbitrum', amount: 150.75 }
+        { tokenName: 'Arbitrum', amount: 1500.75 }
     ];
 
     return (
