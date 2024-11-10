@@ -5,8 +5,8 @@ import { useSDK } from '@metamask/sdk-react';
 function Navbar() {
     const navigate = useNavigate();
     const location = useLocation();
-    const [active, setActive] = React.useState("");
-    const [active, setActive] = useState('');
+    const [active, setActive] = useState("");
+    // const [active, setActive] = useState(''); // You can remove this commented line
     const [account, setAccount] = useState('');
     const { sdk, connected, connecting } = useSDK();
 
@@ -28,10 +28,6 @@ function Navbar() {
         checkConnection();
     }, [sdk, connected]);
 
-    const handleClick = (page) => {
-        setActive(page);
-    }
-
     const connectWallet = async () => {
         try {
             const accounts = await sdk?.connect();
@@ -50,6 +46,7 @@ function Navbar() {
         }
     }
 
+    // Remove the first handleClick declaration and keep only one
     const handleClick = (page) => {
         setActive(page);
     };
