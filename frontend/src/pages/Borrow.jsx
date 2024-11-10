@@ -101,14 +101,15 @@ function Borrow() {
 
     // Function to calculate loan details
     const calculateLoanDetails = () => {
-        if (!validateInputs()) {
+        const collateralAmt = parseFloat(collateralAmount);
+        const cashBorrow = parseFloat(cashToBorrow);
+
+        // Validate inputs
+        if (isNaN(collateralAmt) || isNaN(cashBorrow) || collateralAmt <= 0 || cashBorrow <= 0) {
             setInterestRate("--");
             setInitialLoanToValue("--");
             return;
         }
-
-        const collateralAmt = parseFloat(collateralAmount);
-        const cashBorrow = parseFloat(cashToBorrow);
 
         let collateralPrice = 0;
         if (collateralType === "Bitcoin" && cryptoData) {
