@@ -9,9 +9,9 @@ function Dashboard() {
     const healthScore = 85;
 
     return (
-        <div className="w-full min-h-screen bg-neutral-900">
+        <div className="w-full min-h-screen text-white bg-gray-200">
             <div className="w-full px-6 py-4">
-                <h1 className="text-3xl font-bold text-white mb-8">Crypto Dashboard</h1>
+                <h1 className="text-3xl font-bold  mb-8">Crypto Dashboard</h1>
 
                 {/* Two-column layout for Crypto Health Score, Wallet Assets, and TradingView Chart */}
                 <div className="flex flex-col lg:flex-row gap-8 w-full">
