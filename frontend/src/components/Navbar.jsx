@@ -6,8 +6,9 @@ function Navbar() {
     const navigate = useNavigate();
     const location = useLocation();
     const [active, setActive] = useState("");
-    const [active1, setActive1] = useState("");
-    const [account, setAccount] = useState("");
+
+    // const [active, setActive] = useState(''); // You can remove this commented line
+    const [account, setAccount] = useState('');
     const { sdk, connected, connecting } = useSDK();
 
     useEffect(() => {
@@ -28,9 +29,6 @@ function Navbar() {
         checkConnection();
     }, [sdk, connected]);
 
-    const handleClick = (page) => {
-        setActive(page);
-    };
 
     const connectWallet = async () => {
         try {
@@ -50,8 +48,10 @@ function Navbar() {
         }
     };
 
-    const handleClick1 = (page) => {
-        setActive1(page);
+
+    // Remove the first handleClick declaration and keep only one
+    const handleClick = (page) => {
+        setActive(page);
     };
 
     const navItems = [
