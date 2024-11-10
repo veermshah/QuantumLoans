@@ -19,26 +19,26 @@ Welcome to **Quantum Loans**, your gateway to unlocking the potential of your cr
 1. [Introduction](#introduction)
 2. [How It Works](#how-it-works)
 3. [🔥 FAQs](#-faqs)
-4. [🚀 Getting Started](#getting-started)
-5. [📞 Contact Us](#contact-us)
 
 ---
 
-## ⚙️ How to Run the Project
-
-# To run Frontend:
-cd to frontend
-npm install
-npm run dev
-
-# To run Backend
-cd to python-backend
-pip install -r requirements.txt
-python app.py
-
-# This takes care of everything, the backend makes the nececsary calls to the solidity smart contracts
 
 ## Introduction
+
+## ⚙️ How to Run the Project
+
+## To run Frontend:
+1. cd to frontend
+2. npm install
+3. npm run dev
+
+## To run Backend
+1. cd to python-backend
+2. pip install -r requirements.txt
+3. python app.py
+
+### This takes care of everything, the backend makes the nececsary calls to the solidity smart contracts
+
 
 Overcollateralized crypto loans allow you to access liquidity 💧 without parting with your valuable crypto assets. By depositing more collateral than the loan amount, you can borrow stablecoins or other cryptocurrencies safely and efficiently. 🛡️
 
@@ -114,3 +114,9 @@ Yes! 😊 Once you repay your loan (including any interest or fees), you can wit
 ### 9. 💸 Is there interest on overcollateralized loans?
 
 Yes, most platforms charge interest on loans. The rate depends on the platform and type of loan, and it can be fixed or variable. 📅
+
+
+## 🌟 Join Us in Building the Future of Finance
+### We appreciate your interest in Quantum Loans! If you're passionate about decentralized finance and want to contribute, feel free to fork our repository and submit a pull request. Let's revolutionize crypto lending together! 💪
+
+_Empowering you to achieve more with your crypto assets. 🚀🌕_
