@@ -9,7 +9,7 @@ function Dashboard() {
     const healthScore = 85;
 
     return (
-        <div className="w-full min-h-screen text-white bg-gray-200">
+        <div className="w-full min-h-screen text-white bg-white">
             <div className="w-full px-6 py-4">
                 <h1 className="text-3xl font-bold  mb-8">Crypto Dashboard</h1>
 

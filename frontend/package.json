@@ -14,6 +14,7 @@
     "@emotion/styled": "^11.13.0",
     "@mui/material": "^6.1.6",
     "@mui/x-charts": "^7.22.2",
+    "@splinetool/react-spline": "^4.0.0",
     "axios": "^1.7.7",
     "ethers": "^6.13.4",
     "react": "^18.3.1",
