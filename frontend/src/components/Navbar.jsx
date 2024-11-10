@@ -1,8 +1,9 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 function Navbar() {
     const navigate = useNavigate();
+    const location = useLocation();
     const [active, setActive] = React.useState("");
 
     const handleClick = (page) => {
@@ -15,6 +16,18 @@ function Navbar() {
         { name: "LEND", path: "/lend" },
         { name: "BORROW", path: "/borrow" },
     ];
+
+    React.useEffect(() => {
+        // Set the active state when the location changes
+        if (location.pathname !== "/") {
+            const activePage = navItems.find((item) => item.path === location.pathname);
+            if (activePage) {
+                setActive(activePage.name.toLowerCase());
+            }
+        } else {
+            setActive(""); // No active tab when on the root page
+        }
+    }, [location, navItems]);
 
     return (
         <nav className="fixed top-0 left-0 w-full bg-black border-neutral-800">
