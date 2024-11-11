@@ -4,6 +4,10 @@ Welcome to **Quantum Loans**, your gateway to unlocking the potential of your cr
 
 ---
 
+# 🎉 **First Place Winner** 🏆 – We're proud to announce that **Quantum Loans** won first place in our recent competition!
+
+---
+
 ## 👥 Meet the Team
 
 ### Our Amazing Developers 👨‍💻✨
